@@ -17,7 +17,7 @@ export default function Hero(){
                 Building fast, user-focused web apps
             </div>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-x-5 w-full justify-center items-center sm:items-start p-5">
-                <Link to="projects" smooth={true} duration={500} >
+                <Link to="projects" offset={-40} smooth={true} duration={500} >
                     <button className="t bg-(--primary) text-sm font-light flex items-center justify-center border border-transparent 
                             rounded-lg sm:rounded-xl bg-primary w-37.5 sm:w-50 sm:py-4 sm:text-lg h-fit p-3
                             transition duration-300 space-x-1.5 sm:hover:font-bold hover:-translate-y-1 hover:scale-110">
@@ -25,7 +25,7 @@ export default function Hero(){
                         <ArrowRightIcon className="h-5"/> 
                     </button>
                 </Link>
-                <Link to="contact" smooth={true} duration={500}>
+                <Link to="contact" offset={-40} smooth={true} duration={500}>
                     <button className=" text-(--primary)  text-sm  font-light flex items-center justify-center border border-(--primary)
                             rounded-lg sm:rounded-xl bg-transparent opacity-90 w-37.5 sm:w-50 sm:py-4 sm:text-lg h-fit p-3
                             transition duration-300 space-x-1.5 sm:hover:font-bold ease-in-out hover:-translate-y-1 hover:scale-110">
