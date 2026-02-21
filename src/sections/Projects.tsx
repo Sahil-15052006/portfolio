@@ -26,6 +26,7 @@ const [projects,setProjects]=useState<any[]>([])
     const {data,error} = await supabase
     .from("project")
     .select("*")
+    .order("created_at",{ascending:false})
 
     if(error) {
       console.error(error)
