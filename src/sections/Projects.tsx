@@ -39,7 +39,7 @@ const [projects,setProjects]=useState<any[]>([])
   return (
     <div id="projects" className="bg-(--dark) text-(--light) flex flex-col justify-center items-center py-10 transition-all">
       <div className=" text-4xl sm:text-6xl font-bold w-full text-center p-5 ">Featured Projects</div>
-      <div className=" text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5">A showcase of my best work</div>
+      <div className=" text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5">A showcase of my work</div>
       <div 
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 w-full p-5 sm:px-20 sm:py-10 transition duration-300 ">
         {
