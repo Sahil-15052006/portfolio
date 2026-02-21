@@ -1,8 +1,8 @@
 import { ArrowRightIcon, CodeIcon, DoorOpenIcon, LaptopIcon, MailIcon, RocketIcon} from "lucide-react";
 import { Link } from "react-scroll";
 
-export default function Hero(){
 
+export default function Hero(){
     return(
         <div id="hero" className= "gradient-dark text-(--light) h-full w-full flex flex-col items-center justify-start duration-300 space-y-2 sm:space-y-5 transition px-2 py-10 sm:px-10">
             <div className="animate-pulse flex text-(--primary) opacity-85 border-2 border-(--primary) bg-transparent text-xs sm:text-lg 
