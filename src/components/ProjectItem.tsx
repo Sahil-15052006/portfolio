@@ -11,7 +11,7 @@ interface projectType{
 
 export default function ProjectItem({project}:{project:projectType}) {
   return (
-        <div className="group border border-(--secondary) w-full h-fit rounded-2xl flex flex-col hover:-translate-y-5 hover:border-(--primary) transition duration-300 hover:bg-(--primary)/10 shadow-xl">
+        <div className="group border border-(--secondary) w-full h-full rounded-2xl flex flex-col hover:-translate-y-5 hover:border-(--primary) transition duration-300 hover:bg-(--primary)/10 shadow-xl">
             <div className=" relative w-full h-fit overflow-hidden rounded-t-2xl items-center justify-center flex ">
               <img src={project.image_url}  className="h-70 w-full group-hover:scale-105 transition duration-300 object-cover " />
             </div>
