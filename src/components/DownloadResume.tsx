@@ -8,7 +8,7 @@ export default function DownloadResume() {
         const {data}=supabase
         .storage
         .from("resume")
-        .getPublicUrl("resume.pdf")
+        .getPublicUrl("Sahil-Sawant-Resume.pdf")
 
         window.open(data.publicUrl,"_blank")
         console.log('fetched resume');
