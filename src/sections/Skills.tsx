@@ -1,23 +1,14 @@
 import { LaptopIcon, LightbulbIcon, ServerCogIcon, WrenchIcon } from "lucide-react";
 import SkillBox from "../components/SkillBox";
-import supabase from "../utils/supabase";
 import { useEffect, useState } from "react";
+import api from "../utils/api";
 
 export default function Skills() {
    const [skills,setSkills] = useState<any[]>([])
 
     const fetchData = async()=>{
-        const {data,error} = await supabase
-        .from("skills")
-        .select("*")
-        
-        if (error) {
-            console.error(error)
-            return
-        }
-        setSkills(data)
-        console.log('data fetched');
-        
+        const res = await api.get('/api/skills')
+        setSkills(res.data)
     }
 
     useEffect(()=>{
@@ -31,8 +22,8 @@ export default function Skills() {
         <div className="grid w-full p-5 sm:p-20 grid-cols-1 sm:grid-cols-2 gap-5">
             <SkillBox heading={"Frontend"} icon={LaptopIcon} skills={skills} />
             <SkillBox heading={"Backend"} icon={ServerCogIcon} skills={skills} />
+            <SkillBox heading={"Database"} icon={LightbulbIcon} skills={skills} />
             <SkillBox heading={"Tools"} icon={WrenchIcon} skills={skills} />
-            <SkillBox heading={"Learning"} icon={LightbulbIcon} skills={skills} />
         </div>
     </div>
   )

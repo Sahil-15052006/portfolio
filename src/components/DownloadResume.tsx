@@ -1,25 +1,18 @@
 import { DownloadIcon } from "lucide-react";
-import supabase from "../utils/supabase";
+import api from "../utils/api";
 
 export default function DownloadResume() {
 
     const handleDownload = async() => {
-
-        const {data}=supabase
-        .storage
-        .from("resume")
-        .getPublicUrl("Sahil-Sawant-Resume.pdf")
-
-        window.open(data.publicUrl,"_blank")
-        console.log('fetched resume');
-
+      const res = await api.put('/api/profile/resume')
+      window.open(res.data.resumeURL,"_blank")
     }
   return (
-    <button 
+    <button     
         onClick={()=>handleDownload()}
-        className="flex flex-row items-center justify-center text-sm bg-(--primary) font-bold space-x-2 p-3 rounded-xl w-fit h-fit hover:scale-105 transition duration-300">
+        className="flex flex-row items-center justify-center text-sm bg-(--primary)/40 border border-(--primary) font-mono space-x-2 p-2 rounded w-fit h-fit hover:bg-(--primary)/80 transition duration-300">
         <DownloadIcon className="h-5 w-5"/>
-        <span>Get Resume</span>
+        <span>Resume</span>
     </button>
   )
 }

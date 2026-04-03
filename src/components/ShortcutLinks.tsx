@@ -10,8 +10,8 @@ export default function ShortcutLinks({text,icon:Icon,url}:Props) {
     <a 
         href={url} 
         target="_blank" 
-        className="flex h-fit space-x-2 text-sm bg-(--dark) border-(--secondary) w-full rounded-lg p-2 items-center">
-        <Icon className="text-(--primary) rounded-lg"/>
+        className="flex h-fit space-x-2 text-sm bg-(--dark) border-(--secondary) w-full rounded p-2 items-center">
+        <Icon className="text-(--primary) rounded"/>
         <div className="flex flex-col justify-center items-start">
             <span className="text-xs text-(--secondary)">{text}</span>
         </div>

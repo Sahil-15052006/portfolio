@@ -1,55 +1,55 @@
-import { ArrowRightIcon, CodeIcon, DoorOpenIcon, LaptopIcon, MailIcon, RocketIcon} from "lucide-react";
+import { MailIcon} from "lucide-react";
 import { Link } from "react-scroll";
-
+import SocialMediaLinks from "../components/SocialMediaLinks";
+import { useEffect, useState } from "react";
+import api from "../utils/api";
 
 export default function Hero(){
+
+    const [pfp ,setPfp] = useState()
+    const loadPfp=async()=>{
+        const res = await api.put(`/api/profile/profile-pic/`)
+        setPfp(res.data.profilePicURL)
+    }
+
+    useEffect(()=>{
+        loadPfp()
+    })
+    
     return(
-        <div id="hero" className= "gradient-dark text-(--light) h-full w-full flex flex-col items-center justify-start duration-300 space-y-2 sm:space-y-5 transition px-2 py-10 sm:px-10">
-            <div className="animate-pulse flex text-(--primary) opacity-85 border-2 border-(--primary) bg-transparent text-xs sm:text-lg 
-                            font-bold rounded-xl sm:rounded-full p-2 sm:px-5  sm:py-2 w-fit h-fit space-x-3 items-center duration-300">
-                    <DoorOpenIcon/>
-                    <span>Available for opportunities</span>
+        <div id="hero" className= "gradient-dark text-(--light) min-h-screen pt-20 gap-10 px-5 sm:px-20 w-full grid grid-cols-1 sm:grid-cols-2 justify-between duration-300 transition text-start">
+            <div className="w-full h-full flex flex-col justify-center">
+                <div className="text-[5vh]">
+                    Hi, I am <span className="text-(--primary)">Sahil</span>
+                </div>
+                <div className="text-[8vh]  font-bold w-fit flex flex-wrap">
+                    Full Stack Developer
+                </div>
+                <div className="text-(--secondary) text-[5vh] font-light w-fit">
+                    Building fast, user-focused web apps
+                </div>
+                <div className="flex justify-between items-center w-fit gap-5 mt-5">
+                    <SocialMediaLinks src={"/whatsapp.png"} url={"https://wa.me/917977611642"} />
+                    <SocialMediaLinks src={"/gmail.png"} url={"mailto:sahilsawant15052006@gmail.com"} />
+                    <SocialMediaLinks src={"/linkedin.png"} url={"https://www.linkedin.com/in/sahilsawant1526"} />
+                    <SocialMediaLinks src={"/github.png"} url={"https://github.com/Sahil-15052006"} />
+                </div>
+
+                <div className="flex flex-wrap gap-5 w-fit mt-5">
+                    <Link to="contact" offset={-40} smooth={true} duration={500}>
+                        <button className=" flex space-x-3 items-center justify-center border border-(--primary)
+                                rounded bg-(--primary)/40 p-2 transition duration-300 hover:bg-(--primary)">
+                            <MailIcon className="h-5"/> 
+                            <span>Lets connect</span>
+                        </button>
+                    </Link>
+                </div>
             </div>
-            <div className="text-6xl sm:text-8xl font-bold w-full text-center p-5">
-                Sahil Sawant
-            </div>
-            <div className="text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5">
-                Building fast, user-focused web apps
-            </div>
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-x-5 w-full justify-center items-center sm:items-start p-5">
-                <Link to="projects" offset={-40} smooth={true} duration={500} >
-                    <button className="t bg-(--primary) text-sm font-light flex items-center justify-center border border-transparent 
-                            rounded-lg sm:rounded-xl bg-primary w-37.5 sm:w-50 sm:py-4 sm:text-lg h-fit p-3
-                            transition duration-300 space-x-1.5 sm:hover:font-bold hover:-translate-y-1 hover:scale-110">
-                        <span>View Projects</span>
-                        <ArrowRightIcon className="h-5"/> 
-                    </button>
-                </Link>
-                <Link to="contact" offset={-40} smooth={true} duration={500}>
-                    <button className=" text-(--primary)  text-sm  font-light flex items-center justify-center border border-(--primary)
-                            rounded-lg sm:rounded-xl bg-transparent opacity-90 w-37.5 sm:w-50 sm:py-4 sm:text-lg h-fit p-3
-                            transition duration-300 space-x-1.5 sm:hover:font-bold ease-in-out hover:-translate-y-1 hover:scale-110">
-                        <MailIcon className="h-5"/> 
-                        <span>Contact Me</span>
-                    </button>
-                </Link>
-            </div>
-            <div className="floating-effect grid w-fit grid-rows-3 sm:grid-cols-3 gap-3 justify-center items-center">
-                <span className=" w-full m-auto bg-(--dark) text-(--light) rounded-xl flex space-x-2 p-3 
-                text-sm sm:text-md sm:p-3 border border-(--secondary) transition-all items-center justify-center">
-                    <LaptopIcon className="animate-pulse"/>
-                    <span>Open for internships</span>
-                </span>
-                <span className=" w-full m-auto bg-(--dark) text-(--light) rounded-xl flex space-x-2 p-3 
-                text-sm sm:text-md sm:p-3 border border-(--secondary) transition-all items-center justify-center">
-                    <CodeIcon className="animate-pulse"/>
-                    <span>Frontend Developer</span>
-                </span>
-                <span className=" w-full m-auto bg-(--dark) text-(--light) rounded-xl flex space-x-2 p-3 
-                text-sm sm:text-md sm:p-3 border border-(--secondary) transition-all items-center justify-center">
-                    <RocketIcon className="animate-pulse"/>
-                    <span>Currently building projects</span>
-                </span>
+
+            <div className="w-full h-full flex flex-col gap-5 items-center justify-center p-5">
+                <div className=" rounded-full p-5 border border-(--primary)/20 w-fit">
+                    <img src={pfp} height={250} width={250} alt="pfp" className="rounded-full overflow-hidden" />
+                </div>
             </div>
         </div>
     )

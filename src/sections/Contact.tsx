@@ -21,7 +21,7 @@ export default function Contact() {
                     <ShortcutLinks icon={Mail} text={"sahilsawant15052006@gmail.com"} url={"https://mail.google.com/mail/?view=cm&fs=1&to=sahilsawant15052006@gmail.com "}/>
                     
                 </div>
-                <div className="text-sm w-full text-(--primary) space-y-2 border border-(--primary) bg-(--primary)/20 rounded-2xl p-3">
+                <div className="text-sm w-full text-(--primary) space-y-2 border border-(--primary) bg-(--primary)/20 rounded p-3">
                     <div className="flex space-x-2 justify-start items-center">
                     <MessageCircleIcon className="text-(--primary) h-5 w-5 "/>
                     <span className="font-bold">Response Time</span>

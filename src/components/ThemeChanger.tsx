@@ -13,7 +13,7 @@ export default function ThemeChanger() {
     }
   return (
     <div 
-        className="bg-(--secondary)/20 hover:text-(--primary) flex p-2 rounded-full justify-center items-center text-center duration-300"
+        className=" hover:text-(--primary) flex p-2 rounded-full justify-center items-center text-center duration-300"
         onClick={()=>toggleTheme()}>
         <Moon className={`${lightTheme?"flex":"hidden"} `}/>
         <Sun className={`${lightTheme?"hidden":"flex"}  `}/>         
