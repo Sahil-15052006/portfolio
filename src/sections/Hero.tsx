@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import SocialMediaLinks from "../components/SocialMediaLinks";
 import { useEffect, useState } from "react";
 import api from "../utils/api";
+import DownloadResume from "../components/DownloadResume";
 
 export default function Hero(){
 
@@ -49,6 +50,9 @@ export default function Hero(){
             <div className="w-full h-full flex flex-col gap-5 items-center justify-center p-5">
                 <div className=" rounded-full p-5 border border-(--primary)/20 w-fit">
                     <img src={pfp} height={250} width={250} alt="pfp" className="rounded-full overflow-hidden" />
+                </div>
+                <div className="flex sm:hidden justify-center items-start">
+                    <DownloadResume/>
                 </div>
             </div>
         </div>
