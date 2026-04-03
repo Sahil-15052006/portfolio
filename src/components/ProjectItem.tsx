@@ -108,13 +108,12 @@ export default function ProjectItem({project}:{project:projectType}) {
                 </a>
               </div>   
 
-
-            </div>
               <div className={` absolute bottom-2 right-2 font-mono text-[#ffffff] flex w-full h-fit justify-end`}>
                   <button 
                     onClick={toggleCard}
                     className={` bg-(--primary) px-2 py-1 rounded hover:bg-(--primary)/50 text-sm `}>{open ? "back" : "open" }</button>
               </div>
+            </div>
         </div>
   )
 }
