@@ -29,7 +29,7 @@ export default function Skills() {
                 type:"spring",
                }}
                 key={skill._id}
-                className="border border-(--primary)/40 bg-(--background) rounded-lg px-5 py-2 text-(--primary) ">
+                className="border border-(--primary)/40 bg-(--background) hover:bg-(--primary) hover:text-(--background) rounded-lg px-5 py-2 text-(--primary) ">
                   {skill.name}
                 </motion.div>
             )}

@@ -49,7 +49,7 @@ export default function Nav() {
 
       {/* CENTER NAV */}
       <div
-        className="flex justify-center items-center gap-1 xs:gap-2 rounded-lg border border-white/10 bg-white/5 px-2 py-2"
+        className="flex justify-center items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2 py-2"
       >
         {navItems.map((item) => (
           <motion.div
@@ -68,7 +68,7 @@ export default function Nav() {
         ))}
       </div>
 
-      {/* ACTIONS */}
+
       <div className="hidden sm:flex items-center gap-3">
         <motion.div
           whileHover={{ rotate: 15, scale: 1.1 }}
