@@ -1,6 +1,6 @@
-import { Github, LinkIcon} from "lucide-react";
-import gsap from "gsap";
-import {useRef, useState } from "react";
+import { Github } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 type Project = {
   _id: string;
@@ -15,108 +15,123 @@ type Project = {
   owner: string;
 };
 
-export default function ProjectItem({project}:{project:Project}) {
-
-  const tagsArr=project.tags.split(',')
-  const [open,setOpen]=useState(false)
-  const cardRef=useRef(null)
-  const imgRef=useRef(null)
-
-  const toggleCard=()=>{
-    const card = cardRef.current;
-    const img = imgRef.current;
-
-    if(!open){
-      gsap.to(card,{
-        position:"fixed",
-        zIndex:50,
-        top:0,
-        left:0,
-        width:"100%",
-        height:"100%",
-        duration:0.4,
-        padding:5,
-        ease:"power1.in",
-      }),
-
-      gsap.to(img,{
-        width:"100%",
-        height:()=>window.length >= 1024 ? "70%" : "100%" ,
-        padding:10
-      }),
-
+export default function ProjectItem({ project }: { project: Project }) {
+  // const tagsArr=project.tags.split(',')
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (open) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      gsap.to(card,{
-        position:"relative",
-        duration:1,
-        width:400,
-        height:500,
-        padding:0,
-        zIndex:0,
-        ease:"power1.out",
-      }),
-
-      gsap.to(img,{
-        width:"100%",
-        height:"100%",
-        padding:0,
-      }),
       document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
     }
-    setOpen(!open);
-  }
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    };
+  }, [open]);
 
   return (
-        <div
-        // onClick={toggleCard}
-        ref={cardRef}
-        className={`border border-(--secondary) hover:border-(--primary) bg-(--dark) flex w-100 h-125 overflow-hidden
-                    ${open ? "flex-col lg:flex-row border-none " : "flex-col rounded" } `}>
-            <div className={`${open? "w-full h-full flex justify-center items-start" : "w-full h-[50vh]"} relative  overflow-hidden rounded-t items-center justify-center flex`}>
-              <img ref={imgRef} src={project.imageURL} className={`${open? "w-full h-fit object-cover" : "w-full h-[50vh]"} transition duration-300 object-cover`}/>
+    <motion.div
+      layout
+      animate={{
+        position : open ? 'fixed' : 'relative',
+      }}
+      transition={{
+        duration: 0.5,
+        ease: "easeInOut",
+      }}
+      className={`
+    bg-(--background) backdrop-blur-md overflow-hidden border border-(--secondary)/20
+    ${
+      open
+        ? "fixed inset-0 z-50 flex flex-col lg:flex-row rounded-lg"
+        : "relative flex flex-col w-[20rem] sm:w-[24rem] h-104 rounded-lg hover:border-(--primary)/40"
+    }
+  `}
+    >
+
+      <div
+        className={`
+      overflow-hidden flex justify-center items-center bg-(--dark)
+      ${
+        open
+          ? "w-full h-[40vh] md:px-20 md:py-10 lg:w-1/2 lg:h-full lg:px-0 lg:py-0"
+          : "w-full h-[65%]"
+      }
+    `}
+      >
+        <img
+          src={project.imageURL}
+          alt="project image"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div
+        className={`
+      relative flex flex-col justify-between text-(--light)
+      ${open ? "flex-1 p-5 sm:p-8 overflow-y-auto" : "h-[35%] p-4"}
+    `}
+      >
+        <div className="space-y-3">
+
+          <h1 className={`${open ? "text-2xl sm:text-4xl" : "text-lg"} font-bold`}>
+            {project.title}
+          </h1>
+
+          {open && (
+            <p className="text-(--secondary) text-sm sm:text-base leading-relaxed">
+              {project.description}
+            </p>
+          )}
+
+          {open && (
+            <div className="flex flex-wrap gap-2">
+              {project.tags.split(",").map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 rounded-lg text-xs border border-(--primary)/30 bg-(--primary)/10 text-(--primary)"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
-            <div className="relative flex flex-col justify-start h-fit items-start space-y-3 p-5 pr-10">
-
-              <div className="text-xl sm:text-2xl font-bold">{project.title}</div>
-
-              <div className={`${open ? "flex" : "hidden" } text-sm sm:text-lg text-(--secondary) font-light`}>{project.description}</div>
-
-              <div className={`${open ? "flex" : "hidden" } text-(--secondary) space-x-2 space-y-2`}>
-                {
-                  tagsArr.map((tag)=>
-                   <span key={tag} className="flex border border-(--primary) bg-(--primary)/20 text-xs sm:text-sm
-                          font-light rounded p-1 w-fit h-fit items-center">{tag}</span>
-                  )
-                }
-              </div>
-
-              <div className={`${open ? "flex" : "hidden" } flex-row justify-center items-center`}>
-                <div className=" text-(--secondary) text-sm items-center"><Github className="p-1"/></div>
-                <a
-                  href={project.githubURL}
-                  target="_blank"
-                  className="flex flex-col justify-start items-center hover:text-(--primary) p-1 text-(--secondary) duration-300 ">
-                  <div className="text-sm ">{project.githubURL}</div>
-                </a>
-              </div>
-
-              <div className="flex flex-row  justify-center items-center">
-                <div className="text-(--secondary) text-sm items-center"><LinkIcon className="p-1"/></div>
-                <a
-                  href={project.demoURL}
-                  target="_blank"
-                  className="flex flex-col justify-start items-center hover:text-(--primary) p-1 text-(--secondary) duration-300 ">
-                  <div className="text-sm ">{project.demoURL}</div>
-                </a>
-              </div>
-
-              <div className={` absolute bottom-2 right-2 font-mono text-[#ffffff] flex w-full h-fit justify-end`}>
-                  <button
-                    onClick={toggleCard}
-                    className={` bg-(--primary) px-2 py-1 rounded hover:bg-(--primary)/50 text-sm `}>{open ? "back" : "open" }</button>
-              </div>
-            </div>
+          )}
         </div>
-  )
+
+        <div className="flex items-center justify-between mt-5">
+
+          <a
+            href={project.demoURL}
+            target="_blank"
+            className="text-sm flex justify-center items-center text-(--primary) border border-(--primary)/30 bg-(--primary)/10 hover:bg-(--primary)/20 transition-all duration-300 rounded-lg px-3 py-1.5"
+          >
+            Live Demo
+          </a>
+
+
+          {open && (
+            <a
+              href={project.githubURL}
+              target="_blank"
+              className="text-sm flex justify-center items-center text-(--primary) border border-(--primary)/30 bg-(--primary)/10 hover:bg-(--primary)/20 transition-all duration-300 rounded-lg px-3 py-1.5"
+            >
+              <Github/>
+            </a>
+          )}
+
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-sm bg-(--background)/30 border border-(--primary) text-(--primary) hover:bg-(--primary)/10 transition-all duration-300 rounded-lg px-3 py-1.5"
+          >
+            {open ? "Less" : "More"}
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
 }

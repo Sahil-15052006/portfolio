@@ -12,11 +12,11 @@ export default function ThemeChanger() {
         setLightTheme(!lightTheme)
     }
   return (
-    <div 
-        className=" hover:text-(--primary) flex p-2 rounded-full justify-center items-center text-center duration-300"
+    <div
+        className=" text-(--primary) hover:font-bold flex p-2 rounded-full justify-center items-center text-center duration-300"
         onClick={()=>toggleTheme()}>
         <Moon className={`${lightTheme?"flex":"hidden"} `}/>
-        <Sun className={`${lightTheme?"hidden":"flex"}  `}/>         
-    </div> 
+        <Sun className={`${lightTheme?"hidden":"flex"}  `}/>
+    </div>
   )
 }

@@ -4,6 +4,8 @@ import SocialMediaLinks from "../components/SocialMediaLinks";
 import DownloadResume from "../components/DownloadResume";
 import { usePortfolio } from "../context/PortfolioContext";
 
+
+
 export default function Hero(){
 
     const { portfolioData } = usePortfolio()
@@ -11,15 +13,17 @@ export default function Hero(){
 
     return(
         <div id="hero" className= "gradient-dark text-(--light) min-h-screen pt-20 gap-10 px-5 sm:px-20 w-full grid grid-cols-1 sm:grid-cols-2 justify-between duration-300 transition text-start">
+
             <div className="w-full h-full flex flex-col justify-center">
+
                 <div className="text-[5vh]">
-                    Hi, I am <span className="text-(--primary)">{profile?.name[1]}</span>
+                    Hi, I'm <span className="text-(--primary)">{profile?.name.slice(0,5)}</span>
                 </div>
-                <div className="text-[8vh]  font-bold w-fit flex flex-wrap">
+                <div className="text-[6vh]  font-bold w-fit flex flex-wrap">
                     {profile?.title}
                 </div>
-                <div className="text-(--secondary) text-[5vh] font-light w-fit">
-                    {profile?.title}
+                <div className="text-(--secondary) text-[3vh] font-light w-fit">
+                    {profile?.bio}
                 </div>
                 <div className="flex justify-between items-center w-fit gap-5 mt-5">
                     <SocialMediaLinks src={"/whatsapp.png"} url={"https://wa.me/917977611642"} />
@@ -30,8 +34,7 @@ export default function Hero(){
 
                 <div className="flex flex-wrap gap-5 w-fit mt-5">
                     <Link to="contact" offset={-40} smooth={true} duration={500}>
-                        <button className=" flex space-x-3 items-center justify-center border border-(--primary)
-                                rounded bg-(--primary)/40 p-2 transition duration-300 hover:bg-(--primary)">
+                        <button className=" flex space-x-3 items-center justify-center border border-(--primary) rounded bg-(--dark)/40 p-2 transition duration-300 hover:bg-(--primary)">
                             <MailIcon className="h-5"/>
                             <span>Lets connect</span>
                         </button>

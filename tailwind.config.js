@@ -1,9 +1,14 @@
-export default {
-  darkMode: "class", // 👈 ADD THIS
+// tailwind.config.js
 
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }

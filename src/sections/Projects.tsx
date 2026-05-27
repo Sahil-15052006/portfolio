@@ -1,10 +1,9 @@
 
+import { MoveRight } from "lucide-react";
 import ProjectItem from "../components/ProjectItem";
 import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Projects() {
-
-
 
   const {portfolioData} =  usePortfolio();
   const projects = portfolioData?.projects
@@ -12,17 +11,23 @@ export default function Projects() {
   return (
     <div id="projects" className="bg-(--dark) text-(--light) flex flex-col justify-center items-center py-10 transition-all ">
       <div className=" text-4xl sm:text-6xl font-bold w-full text-center p-5 ">Featured Projects</div>
+
       <div className=" text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5">A showcase of my work</div>
+
       <div
-        className="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-2 w-full p-5 sm:px-16 sm:py-10 transition duration-300 ">
+        className="flex flex-row overflow-x-auto overflow-visible no-scrollbar gap-5 w-full p-10 sm:px-20 sm:py-10 transition duration-500">
             {
               projects?.map((project)=>
-              <div className="flex justify-center items-center ">
-                <ProjectItem key={project._id} project={project}/>
+              <div
+              key={project._id}
+              className="min-w-[320px] sm:min-w-100 lg:min-w-0 flex justify-center items-center transition-all duration-500 ">
+                <ProjectItem project={project}/>
               </div>
               )
             }
       </div>
+
+      <div className="flex justify-center items-center gap-5 text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5"> <MoveRight/>  </div>
     </div>
   )
 }

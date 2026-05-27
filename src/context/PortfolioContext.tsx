@@ -43,15 +43,15 @@ type Skill = {
 
 type PortfolioData = {
   profile: Profile;
-  projects: Project[] | null;
-  skills: Skill[] | null;
+  projects: Project[];
+  skills: Skill[];
 };
 
 const PortfolioContext =createContext<PortfolioContextType | null>(null);
 
 export const PortfolioProvider = ({children,}:{children: ReactNode;}) => {
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const API = import.meta.env.VITE_BACKEND_API;
 
@@ -66,8 +66,9 @@ export const PortfolioProvider = ({children,}:{children: ReactNode;}) => {
     if (!res.ok) {
       throw new Error("Failed to fetch portfolio");
     }
-
+    
     const data = await res.json();
+    // console.log(data);
 
     setPortfolioData(data);
 
