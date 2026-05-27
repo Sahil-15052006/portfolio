@@ -18,18 +18,23 @@ export default function Skills() {
                <motion.div
                whileHover={{
                 scale : 1.2,
-                rotate :360
+                rotate :360,
+                background:"#6565F1",
+                color:"#ffffff"
                }}
                whileTap={{
                 scale : 1.2,
+                rotate: 360,
+                background:"#6565F1",
+                color:"#ffffff"
                }}
                transition={{
                 ease:easeInOut,
-                duration:0.5,
+                duration:1,
                 type:"spring",
                }}
                 key={skill._id}
-                className="border border-(--primary)/40 bg-(--background) hover:bg-(--primary) hover:text-(--background) rounded-lg px-5 py-2 text-(--primary) ">
+                className="border border-(--primary)/40 bg-(--background)  rounded-lg px-5 py-2 text-(--primary) cursor-pointer">
                   {skill.name}
                 </motion.div>
             )}
