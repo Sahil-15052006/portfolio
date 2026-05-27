@@ -13,7 +13,7 @@ export default function Skills() {
         <div className="text-4xl sm:text-6xl font-bold w-full text-center p-5">Skills & Technology</div>
         <div className="text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5">My technical toolkit</div>
         <div className="flex w-full p-5 sm:p-20 ">
-          <div className="flex justify-center item-center flex-wrap gap-3 sm:gap-5 w-full p-5 sm:p-20 bg-(--dark) ">
+          <div className="flex justify-center item-center flex-wrap gap-3 sm:gap-5 w-full p-5 sm:p-20 bg-(--dark) select-none">
             {skills?.map((skill)=>
                <motion.div
                whileHover={{
