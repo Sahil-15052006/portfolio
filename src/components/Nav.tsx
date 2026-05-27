@@ -21,8 +21,8 @@ export default function Nav() {
       }}
       className="
         sticky top-4 z-50
-        mx-auto flex w-[95%] max-w-7xl
-        items-center justify-between
+        mx-auto flex w-full max-w-7xl
+        items-center justify-center sm:justify-between
         rounded-lg border border-white/10
         bg-(--primary)/5
         px-3 sm:px-6 py-3
@@ -49,7 +49,7 @@ export default function Nav() {
 
       {/* CENTER NAV */}
       <div
-        className="flex justify-center items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2 py-2"
+        className="flex justify-center items-center gap-1 xs:gap-2 rounded-lg border border-white/10 bg-white/5 px-2 py-2"
       >
         {navItems.map((item) => (
           <motion.div
@@ -61,7 +61,7 @@ export default function Nav() {
               to={item.to}
               smooth={true}
               offset={-40}
-              className=" relative cursor-pointer rounded-lg px-4 py-2 text-sm font-medium text-(--light) hover:bg-(--primary)/15 :text-(--primary) " >
+              className=" relative cursor-pointer rounded-lg px-3 sm:px-4 py-2 text-sm font-medium text-(--light) hover:bg-(--primary)/15 :text-(--primary) " >
               {item.name}
             </Link>
           </motion.div>
