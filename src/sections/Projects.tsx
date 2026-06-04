@@ -15,7 +15,7 @@ export default function Projects() {
       <div className=" text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5">A showcase of my work</div>
 
       <div
-        className="flex flex-row overflow-x-auto overflow-visible no-scrollbar gap-5 w-full py-5 sm:py-10 transition duration-500">
+        className="flex flex-row overflow-x-auto overflow-visible no-scrollbar gap-5 sm:gap-3 w-full py-5 sm:py-10 transition duration-500">
             {
               projects?.map((project)=>
               <div
