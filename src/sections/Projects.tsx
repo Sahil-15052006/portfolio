@@ -20,7 +20,7 @@ export default function Projects() {
           duration: 0.5,
           ease: "easeInOut",
         }}
-        className="flex flex-row overflow-x-auto overflow-visible no-scrollbar gap-5 sm:gap-1 w-full py-5 sm:py-10 transition ">
+        className="flex flex-row overflow-x-auto overflow-visible no-scrollbar gap-5 sm:gap-1 w-full p-5 sm:px-20 sm:py-10 transition ">
             {
               projects?.map((project)=>
               <div
