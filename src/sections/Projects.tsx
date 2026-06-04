@@ -15,12 +15,12 @@ export default function Projects() {
       <div className=" text-(--secondary) sm:text-(--secondary) text-md sm:text-2xl font-light text-center px-5">A showcase of my work</div>
 
       <div
-        className="flex flex-row overflow-x-auto overflow-visible no-scrollbar gap-5 w-full p-5 sm:py-10 transition duration-500">
+        className="flex flex-row overflow-x-auto overflow-visible no-scrollbar gap-5 w-full py-5 sm:py-10 transition duration-500">
             {
               projects?.map((project)=>
               <div
               key={project._id}
-              className="min-w-[320px] sm:min-w-100 lg:min-w-120 flex justify-center items-center transition-all duration-500 ">
+              className="min-w-100 sm:min-w-100 lg:min-w-120 flex justify-center items-center transition-all duration-300 ">
                 <ProjectItem project={project}/>
               </div>
               )
