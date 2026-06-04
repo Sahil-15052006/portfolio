@@ -20,7 +20,7 @@ export default function Projects() {
               projects?.map((project)=>
               <div
               key={project._id}
-              className="min-w-[320px] sm:min-w-100 lg:min-w-0 flex justify-center items-center transition-all duration-500 ">
+              className="min-w-[320px] sm:min-w-100 lg:min-w-150 flex justify-center items-center transition-all duration-500 ">
                 <ProjectItem project={project}/>
               </div>
               )
