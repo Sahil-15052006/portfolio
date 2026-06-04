@@ -25,7 +25,7 @@ export default function Projects() {
               projects?.map((project)=>
               <div
               key={project._id}
-              className="min-w-100 sm:min-w-100 lg:min-w-120 flex justify-center items-center transition-all duration-500 ">
+              className="min-w-100 sm:min-w-100 lg:min-w-100 flex justify-center items-center transition-all duration-500 ">
                 <ProjectItem project={project}/>
               </div>
               )
