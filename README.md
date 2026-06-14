@@ -1,58 +1,162 @@
-# Personal Developer Portfolio
 
-This is a modern **Developer Portfolio Website** built with [React](https://react.dev) and TypeScript. It showcases projects, technical skills, resume, and contact information using reusable components and a clean responsive design.
+# Portfolio Website
+
+A modern responsive portfolio website built with React.
+
+This repository contains only the **public-facing portfolio website** that visitors can access to view my professional profile, skills, projects, and resume.
+
+> This repository does **not** contain admin authentication, CMS logic, or backend APIs.
 
 ---
 
-## Getting Started
+## Related System Architecture
 
-First, run the development server:
+This portfolio is part of a larger 3-part architecture:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- **Public Portfolio Website (this repo)** → Visitor-facing React application
+- **Admin Panel** → Used by admin to manage content
+- **Backend API Server** → Handles authentication, database, and file storage
+
+---
+
+## How It Works
+
+```text
+Visitor
+   |
+   v
+Portfolio Website (React)
+   |
+   | API Requests
+   v
+Backend Server
+   |
+   +---- MongoDB
+   |
+   +---- Resume Storage
 ```
 
-Open http://localhost:5173 (or your configured port) in your browser to see the result.
+### Flow
 
-You can start editing components inside the `src` directory. The page auto-updates as you modify files.
+1. Visitor opens portfolio website
+2. React frontend sends API requests to backend
+3. Backend fetches portfolio data from database
+4. Website renders:
+   - Personal details
+   - Skills
+   - Projects
+   - Resume link
+
+This architecture keeps the frontend lightweight while all content remains dynamically manageable from the CMS.
 
 ---
 
 ## Features
 
-- Hero section with introduction
-- Projects showcase section
-- Skills display section
-- Resume download functionality
-- Contact form
 - Responsive design
-- Component-based architecture
+- Dynamic portfolio content
+- Project showcase
+- Skills section
+- Resume download
+- Contact section
+- Fast client-side rendering
 
 ---
 
 ## Tech Stack
 
+### Frontend
 - React
-- TypeScript
-- Vite (if used)
-- CSS / Tailwind CSS (whichever you used)
+- JavaScript
+- CSS / Tailwind CSS
+- Axios / Fetch API
+
+### External Dependencies
+- Backend REST API
+- MongoDB-powered CMS
 
 ---
 
-## Purpose
+## Setup
 
-This project was built to create a professional online presence and showcase my projects, skills, and development journey using modern frontend technologies.
+Clone repository:
+
+```bash
+git clone <repo-url>
+cd portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create `.env`
+
+```env
+VITE_SERVER_URL=http://localhost:5000
+```
+
+Run development server:
+
+```bash
+npm run dev
+```
 
 ---
 
-## Deployment
+## Backend Dependency
 
-The project can be deployed using platforms like:
+This frontend depends on a separate backend service for:
 
-- Vercel
-- Netlify
-- GitHub Pages
+- Portfolio data
+- Skills
+- Projects
+- Resume links
+
+Without the backend API, dynamic content will not load.
+
+---
+
+## Admin Access
+
+This repository does **not** include:
+- Admin login
+- JWT authentication
+- Protected routes
+- CMS dashboard
+
+These features are handled in the separate backend/admin system.
+
+---
+
+## Usage
+
+Licensed under MIT.
+
+You may:
+- Use
+- Modify
+- Distribute
+- Build upon this project
+
+Conditions:
+- Include original MIT license
+- Preserve copyright notice
+
+---
+
+## License
+
+MIT License
+
+Copyright (c) 2026 Sahil
+
+---
+
+## Author
+
+**Sahil**  
+MERN Stack Developer | Full Stack Developer
+
